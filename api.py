@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import cassio
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import Cassandra
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Cassandra
 import httpx
 from fastapi.middleware.cors import CORSMiddleware
 import os

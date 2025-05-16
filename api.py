@@ -38,13 +38,13 @@ cassio.init(
 embedding_model = HuggingFaceEmbeddings(model_name="paraphrase-albert-small-v2")
 vector_store = Cassandra(
     embedding=embedding_model,
-    table_name="minipoject_1",
+    table_name="minipoject",
     session=None,
     keyspace="default_keyspace",
 )
 
 # Step 3: Groq API setup
-GROQ_API_KEY = os.getenv("ASTRA_DB_APPLICATION_TOKEN")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_MODEL = "Llama3-8b-8192"
 
 # Step 4: Define request schema
@@ -90,3 +90,8 @@ async def ask_question(input: QuestionInput):
         return {"error": f"Groq API failed: {str(e)}"}
 
     return {"answer": answer}
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("api:app", host="0.0.0.0", port=port)

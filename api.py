@@ -35,10 +35,10 @@ cassio.init(
 )
 
 # Step 2: Set up embeddings and vector store
-embedding_model = HuggingFaceEmbeddings(model_name="paraphrase-albert-small-v2")
+embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLm-L6-v2")
 vector_store = Cassandra(
     embedding=embedding_model,
-    table_name="minipoject",
+    table_name="placement_policy",
     session=None,
     keyspace="default_keyspace",
 )
